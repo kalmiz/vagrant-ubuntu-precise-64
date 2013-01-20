@@ -15,6 +15,15 @@ mkisofs, install [homebrew](http://mxcl.github.com/homebrew/), then:
 
     brew install cdrtools
 
+### Possible extra steps for OSX Lion:
+
+In osx lion 10.7.4, tar won't extract anything, so you should update the libarchive package:
+
+	brew install homebrew/dupes/libarchive
+	brew tap homebrew/dupes 
+
+(It will install to `/usr/local/bin/bsdtar`, won't overwrite system tar)
+
 ### Ben's notes
 
 Forked Carl's repo, and it sort of worked out of the box. Tweaked 

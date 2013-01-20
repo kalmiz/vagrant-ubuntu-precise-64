@@ -11,6 +11,11 @@ set -o errexit
 BOX="ubuntu-precise-64"
 ISO_URL="http://releases.ubuntu.com/precise/ubuntu-12.04.1-alternate-amd64.iso"
 ISO_MD5="682b0388d2a15bf9f38480b0eb4653f6"
+TAR_COMMAND=tar
+if [ -x '/usr/local/bin/bsdtar' ];
+then
+  TAR_COMMAND=/usr/local/bin/bsdtar
+fi
 
 # location, location, location
 FOLDER_BASE=`pwd`
@@ -57,7 +62,7 @@ echo "Creating Custom ISO"
 if [ ! -e "${FOLDER_ISO}/custom.iso" ]; then
 
   echo "Untarring downloaded ISO ..."
-  tar -C "${FOLDER_ISO_CUSTOM}" -xf "${ISO_FILENAME}"
+  ${TAR_COMMAND} -C "${FOLDER_ISO_CUSTOM}" -xf "${ISO_FILENAME}"
 
   # backup initrd.gz
   echo "Backing up current init.rd ..."
